@@ -2,9 +2,9 @@
 
 ## Overview
 
-This project simulates a structured financial month-end close control framework using SQL.
+This project simulates a structured financial close control framework using SQL.
 
-It models how enterprise ERP systems validate financial integrity before reporting and consolidation.
+It models how enterprise ERP environments validate financial integrity before reporting and consolidation by applying control checks across ledger postings, subledgers, and posting period governance.
 
 The engine includes:
 
@@ -50,9 +50,9 @@ The solution contains:
 
 ---
 
-## Close Control Philosophy
+## Financial Close Control Architecture
 
-Controls are structured across three layers:
+Financial close controls are structured across three layers:
 
 1. Structural integrity (double-entry, reversals)
 2. Reconciliation integrity (AR/AP vs GL, GR/IR)
@@ -75,7 +75,7 @@ The summary view provides a high-level close health indicator.
 
 ## Purpose
 
-This repository demonstrates:
+This repository serves as a portfolio artifact demonstrating:
 
 - Financial systems architecture understanding
 - Control-driven thinking

@@ -71,7 +71,7 @@ A[Operational Transactions] --> B[ERP Ledger Postings]
 B --> C[Financial Close Validation Controls]
 
 C --> C1[Posting Period Governance]
-C --> C2[Double Entry Integrity Checks]
+C --> C2[Double-Entry Integrity Checks]
 C --> C3[Subledger vs GL Reconciliation]
 C --> C4[GR/IR Clearing Validation]
 C --> C5[Reversal Integrity Validation]

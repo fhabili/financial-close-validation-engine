@@ -62,6 +62,26 @@ This mirrors real-world close governance frameworks.
 
 ---
 
+## Financial Close Architecture Diagram
+
+```mermaid
+flowchart TD
+
+A[Operational Transactions] --> B[ERP Ledger Postings]
+B --> C[Financial Close Validation Controls]
+
+C --> C1[Posting Period Governance]
+C --> C2[Double Entry Integrity Checks]
+C --> C3[Subledger vs GL Reconciliation]
+C --> C4[GR/IR Clearing Validation]
+C --> C5[Reversal Integrity Validation]
+
+C --> D[Close Health Summary View]
+
+D --> E[Financial Reporting / Consolidation]
+
+---
+
 ## Example Usage (PostgreSQL)
 
 1. Run `schema.sql`

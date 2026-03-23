@@ -119,8 +119,9 @@ flowchart TD
 2. Run `sample_data.sql`
 3. Run `controls.sql`
 4. Run `control_summary.sql`
+5. Run `reporting_layer.sql`
 
-The summary view provides a high-level close health indicator.
+The summary and reporting queries provide a high-level close health and reporting-readiness view.
 
 ---
 

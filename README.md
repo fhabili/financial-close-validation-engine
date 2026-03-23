@@ -2,19 +2,13 @@
 
 ## Overview
 
-This project simulates a structured financial close control framework using SQL.
+This project simulates the financial validation and reporting-readiness layer of an enterprise finance system using SQL.
 
-It models how enterprise ERP environments validate financial integrity before reporting and consolidation by applying control checks across ledger postings, subledgers, and posting period governance.
+It models how posted accounting data is validated for structural integrity, reconciliation accuracy, and period governance during financial close. It then extends into a simplified reporting layer, where validated finance data is transformed and aggregated into reporting outputs.
 
-The engine includes:
+The solution applies control checks across ledger postings, subledgers, and clearing accounts, and demonstrates how finance data moves from validated accounting records into reporting views.
 
-- Posting period validation
-- Double-entry balance checks
-- Reversal integrity validation
-- Subledger vs GL reconciliation (AR/AP)
-- GR/IR clearing balance verification
-- Aging analysis
-- Aggregated close health summary view
+Together with the ERP Ledger Posting Simulation repository, this project forms part of a broader transaction-to-report finance systems portfolio.
 
 ---
 
@@ -43,10 +37,41 @@ This project models those control mechanisms in a simplified architecture.
 
 The solution contains:
 
-- `schema.sql` – Data model for ledger, AR/AP open items, and posting period control
-- `sample_data.sql` – Close scenario sample transactions
-- `controls.sql` – Detailed validation control queries
-- `control_summary.sql` – Aggregated close health overview (dashboard-ready)
+- `schema.sql` – data model for ledger, AR/AP open items, and posting period control
+- `sample_data.sql` – close scenario sample transactions
+- `controls.sql` – detailed validation control queries
+- `control_summary.sql` – aggregated close health overview (dashboard-ready)
+- `reporting_layer.sql` – reporting aggregation views built on validated finance data
+
+---
+
+## Reporting & Data Flow Layer
+
+This project also simulates the downstream reporting layer that follows financial close validation.
+
+Once accounting data has passed close controls, it moves through a simplified reporting pipeline:
+
+**1. Extraction**  
+Validated ledger and subledger data is selected from ERP-style source tables.
+
+**2. Transformation**  
+Data is standardized for reporting purposes, including sign handling, reporting periods, and reporting dimensions such as company code, vendor, and customer.
+
+**3. Aggregation**  
+Transaction-level data is rolled up into reporting-oriented summaries such as:
+
+- monthly revenue
+- AR open balances
+- AP open balances
+- GR/IR balances
+- simple P&L views
+
+**4. Reporting output**  
+These aggregated views represent the final consumption layer used by finance teams for management reporting, close analysis, and working capital monitoring.
+
+This completes the lifecycle represented across the portfolio:
+
+**Business Event → ERP Posting → Financial Validation → Reporting Output**
 
 ---
 
@@ -62,21 +87,28 @@ This mirrors real-world close governance frameworks.
 
 ---
 
-## Financial Close Architecture Diagram
+## Financial Close & Reporting Architecture Diagram
 
 ```mermaid
 flowchart TD
-    A["Operational Transactions"] --> B["ERP Ledger Postings"]
-    B --> C["Financial Close Validation Controls"]
+    A["Business Events"] --> B["ERP Transaction Processing"]
+    B --> C["ERP Ledger Postings (GL + Subledger)"]
 
-    C --> C1["Posting Period Governance"]
-    C --> C2["Double-Entry Integrity Checks"]
-    C --> C3["Subledger vs GL Reconciliation"]
-    C --> C4["GR/IR Clearing Validation"]
-    C --> C5["Reversal Integrity Validation"]
+    C --> D["Financial Close Validation"]
 
-    C --> D["Close Health Summary View"]
-    D --> E["Financial Reporting / Consolidation"]
+    D --> D1["Posting Period Governance"]
+    D --> D2["Double-Entry Integrity Checks"]
+    D --> D3["Subledger vs GL Reconciliation"]
+    D --> D4["GR/IR Clearing Validation"]
+    D --> D5["Reversal Integrity Validation"]
+
+    D --> E["Validated Financial Data"]
+
+    E --> F["ETL / Data Transformation"]
+    F --> G["Aggregation & Reporting Views"]
+
+    G --> H["Financial Reporting Outputs"]
+    H --> I["Management / Regulatory Use"]
 ```
 
 ---

@@ -133,4 +133,4 @@ This repository serves as a portfolio artifact demonstrating:
 - SQL-based financial validation logic
 - Close governance modeling
 
-It is intended as a finance systems portfolio artifact.
+Together with the ERP Ledger Posting Simulation repository, this project represents the validation and reporting layer of a complete transaction-to-report finance systems lifecycle.
